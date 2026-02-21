@@ -15,11 +15,7 @@ import java.math.BigDecimal;
 @Builder
 @Entity
 @Table(name = "products")
-public class Product {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+public class Product extends BaseSchema{
 
     @Column(nullable = false)
     private String name;
