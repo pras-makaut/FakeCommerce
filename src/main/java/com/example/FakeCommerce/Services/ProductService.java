@@ -40,4 +40,8 @@ public class ProductService {
         return productRepositry.findByCategory(categoryName);
 
     }
+
+    public List<String> getAllCategories(){
+        return productRepositry.getAllDistinctCategories();
+    }
 }
