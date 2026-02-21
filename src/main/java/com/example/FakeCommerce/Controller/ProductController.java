@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/products")
@@ -25,5 +26,15 @@ public class ProductController {
     @PostMapping
     Product createProduct(@RequestBody CreateProductRequestDto requestDto){
         return productService.createProduct(requestDto);
+    }
+
+    @GetMapping("/{id}")
+    Optional<Product> getProductById(@PathVariable long id){
+        return productService.getProductById(id);
+    }
+
+    @GetMapping("/search")
+    List<Product> getProductByCategory(@RequestParam("categoryName") String categoryName){
+        return productService.getProductByCategoryName(categoryName);
     }
 }

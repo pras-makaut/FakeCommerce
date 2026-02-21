@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -29,5 +30,14 @@ public class ProductService {
                 .ratings(requestDto.getRatings())
                 .category(requestDto.getCategory())
                 .build());
+    }
+
+    public Optional<Product> getProductById(long id){
+        return productRepositry.findById(id);
+    }
+
+    public List<Product> getProductByCategoryName(String categoryName){
+        return productRepositry.findByCategory(categoryName);
+
     }
 }
