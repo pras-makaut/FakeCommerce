@@ -1,5 +1,6 @@
 package com.example.FakeCommerce.Services;
 
+import com.example.FakeCommerce.DTO.CreateProductRequestDto;
 import com.example.FakeCommerce.Repository.ProductRepositry;
 import com.example.FakeCommerce.Schema.Product;
 import lombok.AllArgsConstructor;
@@ -17,5 +18,16 @@ public class ProductService {
 
     public List<Product> getAllProducts(){
         return productRepositry.findAll();
+    }
+
+    public Product createProduct(CreateProductRequestDto requestDto){
+        return productRepositry.save(Product.builder()
+                .name(requestDto.getName())
+                .price(requestDto.getPrice())
+                .image(requestDto.getImage())
+                .description(requestDto.getDescription())
+                .ratings(requestDto.getRatings())
+                .category(requestDto.getCategory())
+                .build());
     }
 }
