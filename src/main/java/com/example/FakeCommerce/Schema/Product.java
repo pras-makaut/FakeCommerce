@@ -26,7 +26,9 @@ public class Product extends BaseSchema{
     @Column(nullable = false)
     private BigDecimal price;
 
-    private String category;
+    @ManyToOne(fetch = FetchType.LAZY)// ManyToOne can be read as Many Products can have One Category
+    @JoinColumn(name = "category_id",nullable = false)
+    private Category category;
 
     private String ratings;
 

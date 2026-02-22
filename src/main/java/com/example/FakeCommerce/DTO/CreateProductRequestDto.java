@@ -24,7 +24,7 @@ public class CreateProductRequestDto {
 
     private BigDecimal price;
 
-    private String category;
+    private Long category_id;
 
     private String ratings;
 
