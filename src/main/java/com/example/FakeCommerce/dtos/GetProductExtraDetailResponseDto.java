@@ -1,25 +1,17 @@
 package com.example.FakeCommerce.dtos;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import java.math.BigDecimal;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public class GetProductResponseDto {
-    private String name;
+public class GetProductExtraDetailResponseDto extends GetProductResponseDto {
 
-    private String description;
-
-    private BigDecimal price;
-
-    private String ratings;
-
-    private String image;
+    private String category;
 }
