@@ -17,4 +17,11 @@ public interface ProductRepositry extends JpaRepository<Product, Long> {
             value = "select distinct category from products"
     )
     List<String> getAllDistinctCategories();
+
+
+    @Query(
+            nativeQuery = true,
+            value = "SELECT p.* ,c.name  as category FROM products p INNER JOIN categories c on p.category_id = c.id where p.id = :id"
+    )
+    List<Product> findProductWithDetailById(Long id);
 }

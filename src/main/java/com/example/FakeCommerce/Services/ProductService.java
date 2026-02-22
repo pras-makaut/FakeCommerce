@@ -4,6 +4,7 @@ import com.example.FakeCommerce.dtos.CreateProductRequestDto;
 import com.example.FakeCommerce.Repository.ProductRepositry;
 import com.example.FakeCommerce.Schema.Category;
 import com.example.FakeCommerce.Schema.Product;
+import com.example.FakeCommerce.dtos.GetProductExtraDetailResponseDto;
 import com.example.FakeCommerce.dtos.GetProductResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -56,5 +57,18 @@ public class ProductService {
 
     public List<String> getAllCategories(){
         return productRepositry.getAllDistinctCategories();
+    }
+
+    public GetProductExtraDetailResponseDto getProductExtraDetail(Long id){
+        Product product  = productRepositry.findProductWithDetailById(id).get(0);
+
+        return GetProductExtraDetailResponseDto.builder()
+                .name(product.getName())
+                .price(product.getPrice())
+                .image(product.getImage())
+                .category(product.getCategory().getName())
+                .description(product.getDescription())
+                .ratings(product.getRatings())
+                .build();
     }
 }

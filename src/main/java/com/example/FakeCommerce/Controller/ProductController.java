@@ -3,6 +3,7 @@ package com.example.FakeCommerce.Controller;
 import com.example.FakeCommerce.dtos.CreateProductRequestDto;
 import com.example.FakeCommerce.Schema.Product;
 import com.example.FakeCommerce.Services.ProductService;
+import com.example.FakeCommerce.dtos.GetProductExtraDetailResponseDto;
 import com.example.FakeCommerce.dtos.GetProductResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -40,5 +41,10 @@ public class ProductController {
     @GetMapping("/categories")
     List<String> getAllDistictCategory(){
         return productService.getAllCategories();
+    }
+
+    @GetMapping("/{id}/details")
+    GetProductExtraDetailResponseDto getProductExtraDetail(@PathVariable Long id){
+        return productService.getProductExtraDetail(id);
     }
 }
