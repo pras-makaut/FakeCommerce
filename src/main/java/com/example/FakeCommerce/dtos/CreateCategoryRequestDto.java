@@ -1,4 +1,4 @@
-package com.example.FakeCommerce.DTO;
+package com.example.FakeCommerce.dtos;
 
 
 import lombok.AllArgsConstructor;

@@ -1,10 +1,9 @@
 package com.example.FakeCommerce.Controller;
 
-import com.example.FakeCommerce.DTO.CreateProductRequestDto;
+import com.example.FakeCommerce.dtos.CreateProductRequestDto;
 import com.example.FakeCommerce.Schema.Product;
 import com.example.FakeCommerce.Services.ProductService;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import com.example.FakeCommerce.dtos.GetProductResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +18,7 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping
-    List<Product> getAllProducts(){
+    List<GetProductResponseDto> getAllProducts(){
         return productService.getAllProducts();
     }
 

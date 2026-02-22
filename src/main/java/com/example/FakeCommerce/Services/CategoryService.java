@@ -1,6 +1,6 @@
 package com.example.FakeCommerce.Services;
 
-import com.example.FakeCommerce.DTO.CreateCategoryRequestDto;
+import com.example.FakeCommerce.dtos.CreateCategoryRequestDto;
 import com.example.FakeCommerce.Repository.CategoryRepository;
 import com.example.FakeCommerce.Schema.Category;
 import lombok.RequiredArgsConstructor;

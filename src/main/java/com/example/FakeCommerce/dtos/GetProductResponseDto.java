@@ -1,10 +1,5 @@
-package com.example.FakeCommerce.DTO;
+package com.example.FakeCommerce.dtos;
 
-
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,15 +11,12 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CreateProductRequestDto {
-
+public class GetProductResponseDto {
     private String name;
 
     private String description;
 
     private BigDecimal price;
-
-    private Long category_id;
 
     private String ratings;
 
