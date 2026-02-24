@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLRestriction;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -17,6 +19,8 @@ import java.util.List;
 @Builder
 @Entity
 @Table(name = "products")
+@SQLDelete(sql = "UPDATE products set deleted_at = CURRENT_TIMESTAMP WHERE id=?")
+@SQLRestriction("deleted_at IS NULL")
 public class Product extends BaseSchema{
 
     @Column(nullable = false)
