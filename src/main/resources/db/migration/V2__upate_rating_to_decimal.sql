@@ -1,0 +1,1 @@
+ALTER TABLE products MODIFY COLUMN ratings DECIMAL(3, 1) NOT NULL;

@@ -22,7 +22,7 @@ public class CreateProductRequestDto {
 
     private Long category_id;
 
-    private String ratings;
+    private BigDecimal ratings;
 
     private String image;
 }

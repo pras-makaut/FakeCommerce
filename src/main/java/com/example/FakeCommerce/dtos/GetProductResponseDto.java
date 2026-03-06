@@ -19,7 +19,7 @@ public class GetProductResponseDto {
 
     private BigDecimal price;
 
-    private String ratings;
+    private BigDecimal ratings;
 
     private String image;
 }
