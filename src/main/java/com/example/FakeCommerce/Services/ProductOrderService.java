@@ -37,7 +37,7 @@ public class ProductOrderService {
 
             ProductOrder productOrder = new ProductOrder();
 
-            productOrder.setCount(createOrderRequestDto.getQuantity());
+            productOrder.setQuantity(createOrderRequestDto.getQuantity());
             productOrder.setProduct(product);
             productOrder.setOrder(order);
             productOrderRepository.save(productOrder);

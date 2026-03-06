@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigInteger;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,5 +16,5 @@ public class CreateOrderRequestDto {
 
     private Long productId;
 
-    private Long quantity;
+    private Integer quantity;
 }

@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
+import java.math.BigInteger;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,5 +29,6 @@ public class ProductOrder extends BaseSchema {
     @JoinColumn(name = "order_id")
     private Order order;
 
-    private Long count;
+    @Column(nullable = false)
+    private Integer quantity;
 }
