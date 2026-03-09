@@ -1,5 +1,6 @@
 package com.example.FakeCommerce.Services;
 
+import com.example.FakeCommerce.Exeptions.ResourceNotFoundExeption;
 import com.example.FakeCommerce.dtos.CreateCategoryRequestDto;
 import com.example.FakeCommerce.Repository.CategoryRepository;
 import com.example.FakeCommerce.Schema.Category;
@@ -19,8 +20,9 @@ public class CategoryService {
         return categoryRepository.save(Category.builder().name(requestDto.getName()).build());
     }
 
-    public Optional<Category> getCategoryById(Long id){
-        return categoryRepository.findById(id);
+    public Category getCategoryById(Long id){
+
+        return categoryRepository.findById(id).orElseThrow(() -> new ResourceNotFoundExeption("Category with id = "+ id + "not found"));
     }
 
     public List<Category> getAllCategory(){

@@ -34,15 +34,14 @@ public class ProductService {
     }
 
     public Product createProduct(CreateProductRequestDto requestDto){
-        Optional<Category> category = categoryService.getCategoryById(requestDto.getCategory_id());
-        Category categoryObjec = category.orElseThrow(IllegalAccessError::new);
+        Category category = categoryService.getCategoryById(requestDto.getCategory_id());
         return productRepositry.save(Product.builder()
                 .name(requestDto.getName())
                 .price(requestDto.getPrice())
                 .image(requestDto.getImage())
                 .description(requestDto.getDescription())
                 .ratings(requestDto.getRatings())
-                .category(categoryObjec)
+                .category(category)
                 .build());
     }
 
