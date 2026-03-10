@@ -1,5 +1,6 @@
 package com.example.FakeCommerce.Controller;
 
+import com.example.FakeCommerce.Utils.ApiResponse;
 import com.example.FakeCommerce.dtos.CreateCategoryRequestDto;
 import com.example.FakeCommerce.Schema.Category;
 import com.example.FakeCommerce.Services.CategoryService;
@@ -19,14 +20,14 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     @GetMapping
-    ResponseEntity<List<Category>> getAllCategory(){
-        return ResponseEntity.status(HttpStatus.OK).body(categoryService.getAllCategory());
+    ResponseEntity<ApiResponse<List<Category>>> getAllCategory(){
+        return ResponseEntity.status(HttpStatus.OK).body(ApiResponse.success(categoryService.getAllCategory(),"All data fetched successfully"));
     }
 
     @PostMapping
-    ResponseEntity<Category> createCategory(@RequestBody CreateCategoryRequestDto requestDto){
+    ResponseEntity<ApiResponse<Category>> createCategory(@RequestBody CreateCategoryRequestDto requestDto){
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.createCategory(requestDto));
+        return ResponseEntity.status(HttpStatus.CREATED).body(ApiResponse.success(categoryService.createCategory(requestDto),"Category created successfully"));
 
     }
 
