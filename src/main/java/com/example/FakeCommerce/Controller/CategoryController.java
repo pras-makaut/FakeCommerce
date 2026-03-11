@@ -32,12 +32,13 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}")
-    Category getCategoryById(@PathVariable Long id){
-        return categoryService.getCategoryById(id);
+    ResponseEntity<ApiResponse<Category>> getCategoryById(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(ApiResponse.success(categoryService.getCategoryById(id),"Category fetched successfully"));
     }
 
     @DeleteMapping("/{id}")
-    void deleteCategoryById(@PathVariable Long id){
+    ResponseEntity<ApiResponse<Void>> deleteCategoryById(@PathVariable Long id){
         categoryService.deleteCategory(id);
+        return ResponseEntity.status(HttpStatus.OK).body(ApiResponse.success(null, "Category deleted successfully"));
     }
 }

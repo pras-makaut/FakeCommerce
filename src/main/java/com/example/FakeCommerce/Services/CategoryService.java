@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -22,7 +21,8 @@ public class CategoryService {
 
     public Category getCategoryById(Long id){
 
-        return categoryRepository.findById(id).orElseThrow(() -> new ResourceNotFoundExeption("Category with id = "+ id + "not found"));
+        return categoryRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundExeption("Category with id = " + id + " not found"));
     }
 
     public List<Category> getAllCategory(){
@@ -30,6 +30,7 @@ public class CategoryService {
     }
 
     public void deleteCategory(Long id){
-        categoryRepository.deleteById(id);
+        Category category = getCategoryById(id);
+        categoryRepository.delete(category);
     }
 }
