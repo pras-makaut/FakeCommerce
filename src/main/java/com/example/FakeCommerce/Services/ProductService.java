@@ -1,5 +1,6 @@
 package com.example.FakeCommerce.Services;
 
+import com.example.FakeCommerce.Exeptions.ResourceNotFoundExeption;
 import com.example.FakeCommerce.dtos.CreateProductRequestDto;
 import com.example.FakeCommerce.Repository.ProductRepositry;
 import com.example.FakeCommerce.Schema.Category;
@@ -10,7 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -45,8 +45,9 @@ public class ProductService {
                 .build());
     }
 
-    public Optional<Product> getProductById(long id){
-        return productRepositry.findById(id);
+    public Product getProductById(long id){
+        return productRepositry.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundExeption("Product with id = " + id + " not found"));
     }
 
     public List<Product> getProductByCategoryName(String categoryName){
@@ -59,7 +60,11 @@ public class ProductService {
     }
 
     public GetProductExtraDetailResponseDto getProductExtraDetail(Long id){
-        Product product  = productRepositry.findProductWithDetailById(id).get(0);
+        List<Product> products = productRepositry.findProductWithDetailById(id);
+        if (products.isEmpty()) {
+            throw new ResourceNotFoundExeption("Product with id = " + id + " not found");
+        }
+        Product product = products.get(0);
 
         return GetProductExtraDetailResponseDto.builder()
                 .name(product.getName())
@@ -69,5 +74,10 @@ public class ProductService {
                 .description(product.getDescription())
                 .ratings(product.getRatings())
                 .build();
+    }
+
+    public void deleteProduct(Long id){
+        Product product = getProductById(id);
+        productRepositry.delete(product);
     }
 }
