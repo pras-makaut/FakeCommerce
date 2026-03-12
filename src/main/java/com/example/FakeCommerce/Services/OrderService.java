@@ -3,6 +3,8 @@ package com.example.FakeCommerce.Services;
 
 import com.example.FakeCommerce.Adapters.OrderAdapters;
 import com.example.FakeCommerce.Exeptions.ResourceNotFoundExeption;
+import com.example.FakeCommerce.Mapper.OrderItemMapper;
+import com.example.FakeCommerce.Mapper.OrderMapper;
 import com.example.FakeCommerce.Repository.OrderRepository;
 import com.example.FakeCommerce.Repository.ProductOrderRepository;
 import com.example.FakeCommerce.Repository.ProductRepositry;
@@ -27,7 +29,8 @@ public class OrderService {
 
     private final ProductRepositry productRepositry;
 
-    private final OrderAdapters orderAdapters;
+//    private final OrderAdapters orderAdapters;
+    private final OrderMapper orderMapper;
 
 
     public boolean createOrder(List<CreateOrderRequestDto> createOrderRequestDtos){
@@ -51,7 +54,11 @@ public class OrderService {
 
     public List<GetOrderResponseDto> getAllOrders(){
         List<Order> orders = orderRepository.findAll();
-        return orderAdapters.mapToGetOrderResponseDtoList(orders);
+        return orders.stream().map(order -> {
+            List<ProductOrder> productOrders = productOrderRepository.findByOrderId(order.getId());
+            return orderMapper.toGetOrderResponseDto(order,productOrders);
+        }).toList();
+
     }
 
 //    public boolean deleteOrder(Long id) {
@@ -61,10 +68,8 @@ public class OrderService {
     public GetOrderResponseDto getOrderById(Long id){
 
         Order order = orderRepository.findById(id).orElseThrow(() -> new ResourceNotFoundExeption("Order Not found"));
-
-        return orderAdapters.mapToGetOrderResponseDto(order);
-
-
+        List<ProductOrder> items = productOrderRepository.findByOrderId(order.getId());
+         return orderMapper.toGetOrderResponseDto(order,items);
     }
 
 }
