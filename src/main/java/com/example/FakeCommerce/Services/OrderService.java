@@ -13,7 +13,9 @@ import com.example.FakeCommerce.Schema.OrderStatus;
 import com.example.FakeCommerce.Schema.Product;
 import com.example.FakeCommerce.Schema.ProductOrder;
 import com.example.FakeCommerce.dtos.CreateOrderRequestDto;
+import com.example.FakeCommerce.dtos.CreateOrderRequestDtoByDiff;
 import com.example.FakeCommerce.dtos.GetOrderResponseDto;
+import com.example.FakeCommerce.dtos.OrderItemRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +36,6 @@ public class OrderService {
 
 
     public boolean createOrder(List<CreateOrderRequestDto> createOrderRequestDtos){
-
         Order order = new Order();
         order.setStatus(OrderStatus.PENDING);
         orderRepository.save(order);
@@ -72,4 +73,39 @@ public class OrderService {
          return orderMapper.toGetOrderResponseDto(order,items);
     }
 
+    public void createOrderApi(CreateOrderRequestDtoByDiff createOrderRequestDto){
+        // 1. we need to create a new order instance
+
+        // 2.If the payload dto has some order products,add those in the order as well
+        // other wise skip it.
+
+        // return order
+
+        Order order = Order.builder().status(OrderStatus.PENDING).build();
+
+        orderRepository.save(order);
+
+        if(createOrderRequestDto.getOrderItems() != null){
+            for(var itemDto : createOrderRequestDto.getOrderItems()){
+                Product product = productRepositry.findById(itemDto.getProductId())
+                        .orElseThrow(() -> new ResourceNotFoundExeption("Product Not found"));
+
+
+                ProductOrder productOrder = ProductOrder.builder()
+                        .order(order)
+                        .product(product)
+                        .quantity(itemDto.getQuantity() != null ? itemDto.getQuantity() : 1)
+                        .build();
+
+                productOrderRepository.save(productOrder);
+            }
+        }
+    }
+
 }
+
+//User --> cart --> Add an item --> New Order(Pending)
+
+//User --> add more items in the cart -> same order will be updated
+
+// During checkout --> Order pending --> success/failure
