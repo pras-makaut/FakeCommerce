@@ -44,3 +44,30 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+tasks.named('bootRun') {
+	// Ensure the New Relic agent receives the license key at JVM startup.
+	// Prefer an environment variable, but fall back to the local .env file for developer convenience.
+	def nrKey = System.getenv('NEW_RELIC_LICENSE_KEY')
+	if (nrKey == null) {
+		def envFile = file('.env')
+		if (envFile.exists()) {
+			envFile.eachLine { line ->
+				line = line.trim()
+				if (line && !line.startsWith('#') && line.startsWith('NEW_RELIC_LICENSE_KEY=')) {
+					nrKey = line.split('=', 2)[1].trim()
+					// strip surrounding quotes if present
+					if (nrKey.startsWith('"') && nrKey.endsWith('"')) {
+						nrKey = nrKey.substring(1, nrKey.length() - 1)
+					}
+				}
+			}
+		}
+	}
+
+	def args = ['-javaagent:newrelic/newrelic.jar']
+	if (nrKey) {
+		args += "-Dnewrelic.config.license_key=${nrKey}"
+	}
+	jvmArgs = args
+}

@@ -12,14 +12,16 @@ import com.example.FakeCommerce.Schema.Order;
 import com.example.FakeCommerce.Schema.OrderStatus;
 import com.example.FakeCommerce.Schema.Product;
 import com.example.FakeCommerce.Schema.ProductOrder;
-import com.example.FakeCommerce.dtos.CreateOrderRequestDto;
-import com.example.FakeCommerce.dtos.CreateOrderRequestDtoByDiff;
-import com.example.FakeCommerce.dtos.GetOrderResponseDto;
-import com.example.FakeCommerce.dtos.OrderItemRequestDto;
+import com.example.FakeCommerce.dtos.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -73,7 +75,8 @@ public class OrderService {
          return orderMapper.toGetOrderResponseDto(order,items);
     }
 
-    public void createOrderApi(CreateOrderRequestDtoByDiff createOrderRequestDto){
+    @Transactional
+    public GetOrderResponseDto createOrderApi(CreateOrderRequestDtoByDiff createOrderRequestDto){
         // 1. we need to create a new order instance
 
         // 2.If the payload dto has some order products,add those in the order as well
@@ -85,22 +88,126 @@ public class OrderService {
 
         orderRepository.save(order);
 
+
         if(createOrderRequestDto.getOrderItems() != null){
-            for(var itemDto : createOrderRequestDto.getOrderItems()){
-                Product product = productRepositry.findById(itemDto.getProductId())
-                        .orElseThrow(() -> new ResourceNotFoundExeption("Product Not found"));
+            List<Long> productIds = createOrderRequestDto.getOrderItems().stream().
+                    map(OrderItemRequestDto::getProductId)
+                    .toList();
+            List<Product> products = productRepositry.findAllById(productIds);
 
+            Map<Long,Product> productMap = products.stream().
+                    collect(Collectors.toMap(Product::getId, Function.identity()));
 
-                ProductOrder productOrder = ProductOrder.builder()
-                        .order(order)
-                        .product(product)
-                        .quantity(itemDto.getQuantity() != null ? itemDto.getQuantity() : 1)
-                        .build();
-
-                productOrderRepository.save(productOrder);
+            for(Long id:productIds){
+                if(!productMap.containsKey(id)){
+                    throw new ResourceNotFoundExeption("Product id not found with id : "+id);
+                }
             }
+
+            List<ProductOrder> productOrders = new ArrayList<>();
+
+
+            for(var itemDto : createOrderRequestDto.getOrderItems()){
+                Product product = productMap.get(itemDto.getProductId());
+
+                productOrders.add(ProductOrder.builder().
+                        product(product).
+                        order(order)
+                        .quantity(itemDto.getQuantity() != null ? itemDto.getQuantity() : 1)
+                        .build());
+            }
+            productOrderRepository.saveAll(productOrders);
         }
+        return orderMapper.toGetOrderResponseDto(order,productOrderRepository.findByOrderId(order.getId()));
+
     }
+
+    public GetOrderResponseDto updateOrderApi(Long orderId, UpdateOrderRequestDto updateOrderRequestDto){
+        Order order = orderRepository.findById(orderId).
+                orElseThrow(() -> new ResourceNotFoundExeption("Order not found id : "+ orderId));
+
+        if(updateOrderRequestDto.getStatus() != null){
+            order.setStatus(updateOrderRequestDto.getStatus());
+            orderRepository.save(order);
+        }
+
+        if(updateOrderRequestDto.getOrderItems() != null){
+            List<Long> pIds = updateOrderRequestDto.getOrderItems().stream()
+                    .map(OrderItemActionDto::getProductId).toList();
+
+            List<Product> products = productRepositry.findAllById(pIds);
+
+            Map<Long,Product> productMap = products.stream().
+                    collect(Collectors.toMap(Product::getId, Function.identity()));
+
+            for(Long id:pIds){
+                if(!productMap.containsKey(id)){
+                    throw new ResourceNotFoundExeption("Product id not found with id : "+id);
+                }
+            }
+
+            List<ProductOrder> toSave = new ArrayList<>();
+            List<ProductOrder> toDelete = new ArrayList<>();
+            Map<Long ,ProductOrder> existing = productOrderRepository.findByOrdertWithProduct(order).stream()
+                    .collect(Collectors.toMap(op -> op.getProduct().getId(),Function.identity()));
+
+            for(OrderItemActionDto orderItem : updateOrderRequestDto.getOrderItems()){
+                Product product = productMap.get(orderItem.getProductId());
+
+                ProductOrder existingProductOrder = existing.get(product.getId());
+
+                switch (orderItem.getAction()) {
+                    case OrderItemActions.ADD -> {
+                        if (existingProductOrder != null) {
+                            existingProductOrder.setQuantity(existingProductOrder.getQuantity() + (orderItem.getQuantity() != null ? orderItem.getQuantity() : 1));
+                            toSave.add(existingProductOrder);
+                        } else {
+                            ProductOrder newProductOrder = ProductOrder.builder()
+                                    .product(product)
+                                    .order(order)
+                                    .quantity(orderItem.getQuantity() != null ? orderItem.getQuantity() : 1)
+                                    .build();
+                            existing.put(product.getId(), newProductOrder);
+                            toSave.add(newProductOrder);
+                        }
+                    }
+                    case OrderItemActions.REMOVE -> {
+                        if (existingProductOrder == null) {
+                            throw new ResourceNotFoundExeption("Product not found with id:" + product.getId());
+                        }
+
+                        toDelete.add(existingProductOrder);
+                        existing.remove(product.getId());
+                    }
+                    case OrderItemActions.INCREMENT -> {
+                        if (existingProductOrder == null) {
+                            throw new ResourceNotFoundExeption("Product not found with id:" + product.getId());
+                        }
+                        existingProductOrder.setQuantity(existingProductOrder.getQuantity() + 1);
+                        toSave.add(existingProductOrder);
+                    }
+                    case OrderItemActions.DECREMENT -> {
+                        if (existingProductOrder == null) {
+                            throw new ResourceNotFoundExeption("Product not found with id:" + product.getId());
+                        }
+                        if (existingProductOrder.getQuantity() <= 1) {
+                            toDelete.add(existingProductOrder);
+                            existing.remove(product.getId());
+                        } else {
+                            existingProductOrder.setQuantity(existingProductOrder.getQuantity() - 1);
+                            toSave.add(existingProductOrder);
+                        }
+                    }
+                }
+            }
+
+            productOrderRepository.saveAll(toSave);
+            productOrderRepository.deleteAll(toDelete);
+        }
+        return orderMapper.toGetOrderResponseDto(order,productOrderRepository.findByOrderId(orderId));
+    }
+
+
 
 }
 

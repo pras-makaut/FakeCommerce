@@ -1,0 +1,42 @@
+2026-03-26T19:51:58,390+0530 [10291 3] com.newrelic INFO: Writing to New Relic log file: /Users/prashantranjan/Downloads/FakeCommerce/newrelic/logs/newrelic_agent.log
+2026-03-26T19:51:58,390+0530 [10291 3] com.newrelic INFO: JRE vendor Oracle Corporation version 25.0.1
+2026-03-26T19:51:58,390+0530 [10291 3] com.newrelic INFO: JVM vendor Oracle Corporation OpenJDK 64-Bit Server VM version 25.0.1+8-27
+2026-03-26T19:51:58,390+0530 [10291 3] com.newrelic INFO: OS Mac OS X version 26.3.1 arch aarch64
+2026-03-26T19:51:58,390+0530 [10291 3] com.newrelic INFO: Agent Host: Prashants-MacBook-Air.local IP: 127.0.0.1
+2026-03-26T19:51:58,391+0530 [10291 3] com.newrelic INFO: New Relic Agent v9.1.0 is initializing...
+2026-03-26T19:51:58,552+0530 [10291 40] com.newrelic INFO: Instrumentation com.newrelic.instrumentation.jdbc-resultset is disabled. Skipping.
+2026-03-26T19:51:58,839+0530 [10291 3] com.newrelic INFO: The full granularity root sampler was configured to use the adaptive sampler type.
+2026-03-26T19:51:58,839+0530 [10291 3] com.newrelic INFO: Started Adaptive Sampler with sampling target 120 and report period 60 seconds.
+2026-03-26T19:51:58,839+0530 [10291 3] com.newrelic INFO: The full granularity remote_parent_sampled sampler was configured to use the adaptive sampler type.
+2026-03-26T19:51:58,839+0530 [10291 3] com.newrelic INFO: The full granularity remote_parent_not_sampled sampler was configured to use the adaptive sampler type.
+2026-03-26T19:51:58,840+0530 [10291 3] com.newrelic.agent.RPMServiceManagerImpl INFO: Configured to connect to New Relic at collector.newrelic.com:443
+2026-03-26T19:51:58,897+0530 [10291 3] com.newrelic INFO: Setting audit_mode to false
+2026-03-26T19:51:58,935+0530 [10291 3] com.newrelic.agent.config.ConfigServiceImpl INFO: Configuration file is /Users/prashantranjan/Downloads/FakeCommerce/newrelic/./newrelic.yml
+2026-03-26T19:51:58,937+0530 [10291 3] com.newrelic INFO: New Relic Agent v9.1.0 has started
+2026-03-26T19:51:58,937+0530 [10291 3] com.newrelic INFO: Agent class loader: com.newrelic.bootstrap.BootstrapAgent$JVMAgentClassLoader@7b3300e5
+2026-03-26T19:51:58,937+0530 [10291 3] com.newrelic INFO: Premain startup complete in 827ms
+2026-03-26T19:51:58,937+0530 [10291 3] com.newrelic INFO: New Relic Security is completely disabled by one of the user provided config `security.enabled`, `security.agent.enabled` or `high_security`. Not loading security capabilities.
+2026-03-26T19:51:59,836+0530 [10291 64] com.newrelic INFO: Server Info: Apache Tomcat/11.0.18
+2026-03-26T19:52:03,949+0530 [10291 60] com.newrelic INFO: Host name is Prashants-MacBook-Air.local, display host Prashants-MacBook-Air.local for application SpringBootFakeCommerceApp
+2026-03-26T19:52:03,953+0530 [10291 60] com.newrelic INFO: New Relic JFR Monitor is disabled: JFR config has not been enabled in the Java agent.
+2026-03-26T19:52:05,863+0530 [10291 60] com.newrelic INFO: Collector redirection to collector.newrelic.com:443
+2026-03-26T19:52:06,858+0530 [10291 60] com.newrelic INFO: Max payload size is 1,000,000 bytes
+2026-03-26T19:52:06,858+0530 [10291 60] com.newrelic INFO: Agent run id: BUUp2oyj_3IxAHfADEKLrWVpxUGAAAIBAAAnIQEAACgzAgRCjV9pAwAFOS4xLjAAG1ByYXNoYW50cy1NYWNCb29rLUFpci5sb2NhbAAZU3ByaW5nQm9vdEZha2VDb21tZXJjZUFwcA
+2026-03-26T19:52:06,859+0530 [10291 60] com.newrelic INFO: Agent 10291@Prashants-MacBook-Air.local/SpringBootFakeCommerceApp connected to collector.newrelic.com:443
+2026-03-26T19:52:06,859+0530 [10291 60] com.newrelic INFO: Reporting to: https://rpm.newrelic.com/accounts/7847948/applications/1116561257
+2026-03-26T19:52:06,859+0530 [10291 60] com.newrelic INFO: Using default collector host: collector.newrelic.com
+2026-03-26T19:52:06,860+0530 [10291 60] com.newrelic INFO: Using default metric ingest URI: https://metric-api.newrelic.com/metric/v1
+2026-03-26T19:52:06,860+0530 [10291 60] com.newrelic INFO: Using default event ingest URI: https://insights-collector.newrelic.com/v1/accounts/events
+2026-03-26T19:52:06,862+0530 [10291 60] com.newrelic INFO: Using default collector host: collector.newrelic.com
+2026-03-26T19:52:06,862+0530 [10291 60] com.newrelic INFO: Using default metric ingest URI: https://metric-api.newrelic.com/metric/v1
+2026-03-26T19:52:06,862+0530 [10291 60] com.newrelic INFO: Using default event ingest URI: https://insights-collector.newrelic.com/v1/accounts/events
+2026-03-26T19:52:09,067+0530 [10291 60] com.newrelic INFO: Real user monitoring is enabled for application SpringBootFakeCommerceApp. Auto instrumentation is enabled.
+2026-03-26T19:52:09,068+0530 [10291 60] com.newrelic INFO: Updating shared Adaptive Sampler sampling target to 120
+2026-03-26T19:52:09,068+0530 [10291 60] com.newrelic INFO: New Relic JFR Monitor is disabled: JFR config has not been enabled in the Java agent.
+2026-03-26T21:45:12,464+0530 [10291 91] com.newrelic ERROR: A socket exception was encountered while sending data to New Relic (java.net.SocketException: Connection reset). Please check your network / proxy settings.
+2026-03-26T22:36:17,177+0530 [10291 91] com.newrelic ERROR: A socket exception was encountered while sending data to New Relic (java.net.SocketException: Connection reset). Please check your network / proxy settings.
+2026-03-26T23:14:39,821+0530 [10291 90] com.newrelic ERROR: Remote metric_data call failed : java.net.SocketTimeoutException: Read timed out.
+2026-03-26T23:14:39,824+0530 [10291 90] com.newrelic INFO: An unexpected error occurred sending metric data to New Relic. Please file a support ticket once you have seen several of these messages in a short period of time: java.net.SocketTimeoutException: Read timed out
+2026-03-26T23:15:23,918+0530 [10291 90] com.newrelic INFO: Successfully reconnected to the New Relic data service.
+2026-03-26T23:55:03,277+0530 [10291 91] com.newrelic ERROR: A socket exception was encountered while sending data to New Relic (java.net.SocketException: Connection reset). Please check your network / proxy settings.
+2026-03-26T23:57:06,443+0530 [10291 32] com.newrelic.agent.core.CoreServiceImpl INFO: JVM is shutting down
