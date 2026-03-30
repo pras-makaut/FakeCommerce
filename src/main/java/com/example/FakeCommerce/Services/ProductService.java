@@ -8,11 +8,13 @@ import com.example.FakeCommerce.Schema.Product;
 import com.example.FakeCommerce.dtos.GetProductExtraDetailResponseDto;
 import com.example.FakeCommerce.dtos.GetProductResponseDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class ProductService {
@@ -62,6 +64,7 @@ public class ProductService {
     public GetProductExtraDetailResponseDto getProductExtraDetail(Long id){
         List<Product> products = productRepositry.findProductWithDetailById(id);
         if (products.isEmpty()) {
+            log.info("Prouct not found with id" + id);
             throw new ResourceNotFoundExeption("Product with id = " + id + " not found");
         }
         Product product = products.get(0);

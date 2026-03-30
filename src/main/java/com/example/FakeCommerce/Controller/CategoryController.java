@@ -5,12 +5,14 @@ import com.example.FakeCommerce.dtos.CreateCategoryRequestDto;
 import com.example.FakeCommerce.Schema.Category;
 import com.example.FakeCommerce.Services.CategoryService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/v1/categories")
 @RequiredArgsConstructor
@@ -38,6 +40,8 @@ public class CategoryController {
     @DeleteMapping("/{id}")
     ResponseEntity<ApiResponse<Void>> deleteCategoryById(@PathVariable Long id){
         categoryService.deleteCategory(id);
+        log.info("category deleted successfully");
         return ResponseEntity.status(HttpStatus.OK).body(ApiResponse.success(null, "Category deleted successfully"));
+
     }
 }
