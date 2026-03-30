@@ -120,7 +120,7 @@ public class OrderService {
         return orderMapper.toGetOrderResponseDto(order,productOrderRepository.findByOrderId(order.getId()));
 
     }
-
+    @Transactional
     public GetOrderResponseDto updateOrderApi(Long orderId, UpdateOrderRequestDto updateOrderRequestDto){
         Order order = orderRepository.findById(orderId).
                 orElseThrow(() -> new ResourceNotFoundExeption("Order not found id : "+ orderId));
