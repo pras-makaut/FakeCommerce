@@ -40,3 +40,95 @@
 2026-03-26T23:15:23,918+0530 [10291 90] com.newrelic INFO: Successfully reconnected to the New Relic data service.
 2026-03-26T23:55:03,277+0530 [10291 91] com.newrelic ERROR: A socket exception was encountered while sending data to New Relic (java.net.SocketException: Connection reset). Please check your network / proxy settings.
 2026-03-26T23:57:06,443+0530 [10291 32] com.newrelic.agent.core.CoreServiceImpl INFO: JVM is shutting down
+2026-03-30T17:58:54,583+0530 [17857 3] com.newrelic INFO: Writing to New Relic log file: /Users/prashantranjan/Downloads/FakeCommerce/newrelic/logs/newrelic_agent.log
+2026-03-30T17:58:54,583+0530 [17857 3] com.newrelic INFO: JRE vendor Oracle Corporation version 25.0.1
+2026-03-30T17:58:54,583+0530 [17857 3] com.newrelic INFO: JVM vendor Oracle Corporation OpenJDK 64-Bit Server VM version 25.0.1+8-27
+2026-03-30T17:58:54,583+0530 [17857 3] com.newrelic INFO: OS Mac OS X version 26.3.1 arch aarch64
+2026-03-30T17:58:54,584+0530 [17857 3] com.newrelic INFO: Agent Host: Prashants-MacBook-Air.local IP: 127.0.0.1
+2026-03-30T17:58:54,584+0530 [17857 3] com.newrelic INFO: New Relic Agent v9.1.0 is initializing...
+2026-03-30T17:58:54,746+0530 [17857 41] com.newrelic INFO: Instrumentation com.newrelic.instrumentation.jdbc-resultset is disabled. Skipping.
+2026-03-30T17:58:55,340+0530 [17857 3] com.newrelic INFO: The full granularity root sampler was configured to use the adaptive sampler type.
+2026-03-30T17:58:55,340+0530 [17857 3] com.newrelic INFO: Started Adaptive Sampler with sampling target 120 and report period 60 seconds.
+2026-03-30T17:58:55,340+0530 [17857 3] com.newrelic INFO: The full granularity remote_parent_sampled sampler was configured to use the adaptive sampler type.
+2026-03-30T17:58:55,340+0530 [17857 3] com.newrelic INFO: The full granularity remote_parent_not_sampled sampler was configured to use the adaptive sampler type.
+2026-03-30T17:58:55,341+0530 [17857 3] com.newrelic.agent.RPMServiceManagerImpl INFO: Configured to connect to New Relic at collector.newrelic.com:443
+2026-03-30T17:58:55,408+0530 [17857 3] com.newrelic INFO: Setting audit_mode to false
+2026-03-30T17:58:55,444+0530 [17857 3] com.newrelic.agent.config.ConfigServiceImpl INFO: Configuration file is /Users/prashantranjan/Downloads/FakeCommerce/newrelic/./newrelic.yml
+2026-03-30T17:58:55,445+0530 [17857 3] com.newrelic INFO: New Relic Agent v9.1.0 has started
+2026-03-30T17:58:55,445+0530 [17857 3] com.newrelic INFO: Agent class loader: com.newrelic.bootstrap.BootstrapAgent$JVMAgentClassLoader@7b3300e5
+2026-03-30T17:58:55,445+0530 [17857 3] com.newrelic INFO: Premain startup complete in 1,185ms
+2026-03-30T17:58:55,446+0530 [17857 3] com.newrelic INFO: New Relic Security is completely disabled by one of the user provided config `security.enabled`, `security.agent.enabled` or `high_security`. Not loading security capabilities.
+2026-03-30T17:58:56,372+0530 [17857 64] com.newrelic INFO: Server Info: Apache Tomcat/11.0.18
+2026-03-30T17:58:58,123+0530 [17857 26] com.newrelic.agent.core.CoreServiceImpl INFO: JVM is shutting down
+2026-03-30T18:00:15,877+0530 [18323 3] com.newrelic INFO: Writing to New Relic log file: /Users/prashantranjan/Downloads/FakeCommerce/newrelic/logs/newrelic_agent.log
+2026-03-30T18:00:15,877+0530 [18323 3] com.newrelic INFO: JRE vendor Oracle Corporation version 25.0.1
+2026-03-30T18:00:15,877+0530 [18323 3] com.newrelic INFO: JVM vendor Oracle Corporation OpenJDK 64-Bit Server VM version 25.0.1+8-27
+2026-03-30T18:00:15,877+0530 [18323 3] com.newrelic INFO: OS Mac OS X version 26.3.1 arch aarch64
+2026-03-30T18:00:15,877+0530 [18323 3] com.newrelic INFO: Agent Host: Prashants-MacBook-Air.local IP: 127.0.0.1
+2026-03-30T18:00:15,877+0530 [18323 3] com.newrelic INFO: New Relic Agent v9.1.0 is initializing...
+2026-03-30T18:00:16,037+0530 [18323 41] com.newrelic INFO: Instrumentation com.newrelic.instrumentation.jdbc-resultset is disabled. Skipping.
+2026-03-30T18:00:16,271+0530 [18323 3] com.newrelic INFO: The full granularity root sampler was configured to use the adaptive sampler type.
+2026-03-30T18:00:16,271+0530 [18323 3] com.newrelic INFO: Started Adaptive Sampler with sampling target 120 and report period 60 seconds.
+2026-03-30T18:00:16,271+0530 [18323 3] com.newrelic INFO: The full granularity remote_parent_sampled sampler was configured to use the adaptive sampler type.
+2026-03-30T18:00:16,271+0530 [18323 3] com.newrelic INFO: The full granularity remote_parent_not_sampled sampler was configured to use the adaptive sampler type.
+2026-03-30T18:00:16,272+0530 [18323 3] com.newrelic.agent.RPMServiceManagerImpl INFO: Configured to connect to New Relic at collector.newrelic.com:443
+2026-03-30T18:00:16,332+0530 [18323 3] com.newrelic INFO: Setting audit_mode to false
+2026-03-30T18:00:16,369+0530 [18323 3] com.newrelic.agent.config.ConfigServiceImpl INFO: Configuration file is /Users/prashantranjan/Downloads/FakeCommerce/newrelic/./newrelic.yml
+2026-03-30T18:00:16,371+0530 [18323 3] com.newrelic INFO: New Relic Agent v9.1.0 has started
+2026-03-30T18:00:16,371+0530 [18323 3] com.newrelic INFO: Agent class loader: com.newrelic.bootstrap.BootstrapAgent$JVMAgentClassLoader@7b3300e5
+2026-03-30T18:00:16,371+0530 [18323 3] com.newrelic INFO: Premain startup complete in 788ms
+2026-03-30T18:00:16,371+0530 [18323 3] com.newrelic INFO: New Relic Security is completely disabled by one of the user provided config `security.enabled`, `security.agent.enabled` or `high_security`. Not loading security capabilities.
+2026-03-30T18:00:17,310+0530 [18323 64] com.newrelic INFO: Server Info: Apache Tomcat/11.0.18
+2026-03-30T18:00:21,383+0530 [18323 60] com.newrelic INFO: Host name is Prashants-MacBook-Air.local, display host Prashants-MacBook-Air.local for application SpringBootFakeCommerceApp
+2026-03-30T18:00:21,387+0530 [18323 60] com.newrelic INFO: New Relic JFR Monitor is disabled: JFR config has not been enabled in the Java agent.
+2026-03-30T18:00:23,184+0530 [18323 60] com.newrelic INFO: Collector redirection to collector.newrelic.com:443
+2026-03-30T18:00:25,312+0530 [18323 60] com.newrelic INFO: Max payload size is 1,000,000 bytes
+2026-03-30T18:00:25,312+0530 [18323 60] com.newrelic INFO: Agent run id: BaGr9aPycEPKAHfADELa7CRpym1AAAIBAAAnIQEAAEeTAgRCjV9pAwAFOS4xLjAAG1ByYXNoYW50cy1NYWNCb29rLUFpci5sb2NhbAAZU3ByaW5nQm9vdEZha2VDb21tZXJjZUFwcA
+2026-03-30T18:00:25,313+0530 [18323 60] com.newrelic INFO: Agent 18323@Prashants-MacBook-Air.local/SpringBootFakeCommerceApp connected to collector.newrelic.com:443
+2026-03-30T18:00:25,313+0530 [18323 60] com.newrelic INFO: Reporting to: https://rpm.newrelic.com/accounts/7847948/applications/1116561257
+2026-03-30T18:00:25,314+0530 [18323 60] com.newrelic INFO: Using default collector host: collector.newrelic.com
+2026-03-30T18:00:25,314+0530 [18323 60] com.newrelic INFO: Using default metric ingest URI: https://metric-api.newrelic.com/metric/v1
+2026-03-30T18:00:25,314+0530 [18323 60] com.newrelic INFO: Using default event ingest URI: https://insights-collector.newrelic.com/v1/accounts/events
+2026-03-30T18:00:25,316+0530 [18323 60] com.newrelic INFO: Using default collector host: collector.newrelic.com
+2026-03-30T18:00:25,316+0530 [18323 60] com.newrelic INFO: Using default metric ingest URI: https://metric-api.newrelic.com/metric/v1
+2026-03-30T18:00:25,316+0530 [18323 60] com.newrelic INFO: Using default event ingest URI: https://insights-collector.newrelic.com/v1/accounts/events
+2026-03-30T18:00:26,793+0530 [18323 60] com.newrelic INFO: Real user monitoring is enabled for application SpringBootFakeCommerceApp. Auto instrumentation is enabled.
+2026-03-30T18:00:26,793+0530 [18323 60] com.newrelic INFO: Updating shared Adaptive Sampler sampling target to 120
+2026-03-30T18:00:26,794+0530 [18323 60] com.newrelic INFO: New Relic JFR Monitor is disabled: JFR config has not been enabled in the Java agent.
+2026-03-30T18:01:09,173+0530 [18323 26] com.newrelic.agent.core.CoreServiceImpl INFO: JVM is shutting down
+2026-03-30T18:03:48,984+0530 [18877 3] com.newrelic INFO: Writing to New Relic log file: /Users/prashantranjan/Downloads/FakeCommerce/newrelic/logs/newrelic_agent.log
+2026-03-30T18:03:48,984+0530 [18877 3] com.newrelic INFO: JRE vendor Oracle Corporation version 25.0.1
+2026-03-30T18:03:48,984+0530 [18877 3] com.newrelic INFO: JVM vendor Oracle Corporation OpenJDK 64-Bit Server VM version 25.0.1+8-27
+2026-03-30T18:03:48,984+0530 [18877 3] com.newrelic INFO: OS Mac OS X version 26.3.1 arch aarch64
+2026-03-30T18:03:48,984+0530 [18877 3] com.newrelic INFO: Agent Host: Prashants-MacBook-Air.local IP: 127.0.0.1
+2026-03-30T18:03:48,985+0530 [18877 3] com.newrelic INFO: New Relic Agent v9.1.0 is initializing...
+2026-03-30T18:03:49,141+0530 [18877 41] com.newrelic INFO: Instrumentation com.newrelic.instrumentation.jdbc-resultset is disabled. Skipping.
+2026-03-30T18:03:49,378+0530 [18877 3] com.newrelic INFO: The full granularity root sampler was configured to use the adaptive sampler type.
+2026-03-30T18:03:49,379+0530 [18877 3] com.newrelic INFO: Started Adaptive Sampler with sampling target 120 and report period 60 seconds.
+2026-03-30T18:03:49,379+0530 [18877 3] com.newrelic INFO: The full granularity remote_parent_sampled sampler was configured to use the adaptive sampler type.
+2026-03-30T18:03:49,379+0530 [18877 3] com.newrelic INFO: The full granularity remote_parent_not_sampled sampler was configured to use the adaptive sampler type.
+2026-03-30T18:03:49,380+0530 [18877 3] com.newrelic.agent.RPMServiceManagerImpl INFO: Configured to connect to New Relic at collector.newrelic.com:443
+2026-03-30T18:03:49,440+0530 [18877 3] com.newrelic INFO: Setting audit_mode to false
+2026-03-30T18:03:49,478+0530 [18877 3] com.newrelic.agent.config.ConfigServiceImpl INFO: Configuration file is /Users/prashantranjan/Downloads/FakeCommerce/newrelic/./newrelic.yml
+2026-03-30T18:03:49,479+0530 [18877 3] com.newrelic INFO: New Relic Agent v9.1.0 has started
+2026-03-30T18:03:49,479+0530 [18877 3] com.newrelic INFO: Agent class loader: com.newrelic.bootstrap.BootstrapAgent$JVMAgentClassLoader@7b3300e5
+2026-03-30T18:03:49,479+0530 [18877 3] com.newrelic INFO: Premain startup complete in 786ms
+2026-03-30T18:03:49,480+0530 [18877 3] com.newrelic INFO: New Relic Security is completely disabled by one of the user provided config `security.enabled`, `security.agent.enabled` or `high_security`. Not loading security capabilities.
+2026-03-30T18:03:50,426+0530 [18877 64] com.newrelic INFO: Server Info: Apache Tomcat/11.0.18
+2026-03-30T18:03:54,491+0530 [18877 60] com.newrelic INFO: Host name is Prashants-MacBook-Air.local, display host Prashants-MacBook-Air.local for application SpringBootFakeCommerceApp
+2026-03-30T18:03:54,495+0530 [18877 60] com.newrelic INFO: New Relic JFR Monitor is disabled: JFR config has not been enabled in the Java agent.
+2026-03-30T18:03:56,132+0530 [18877 60] com.newrelic INFO: Collector redirection to collector.newrelic.com:443
+2026-03-30T18:03:57,365+0530 [18877 60] com.newrelic INFO: Max payload size is 1,000,000 bytes
+2026-03-30T18:03:57,366+0530 [18877 60] com.newrelic INFO: Agent run id: BSgVY8rd4_YJAHfADEKLrWVpym30AAIBAAAnIQEAAEm9AgRCjV9pAwAFOS4xLjAAG1ByYXNoYW50cy1NYWNCb29rLUFpci5sb2NhbAAZU3ByaW5nQm9vdEZha2VDb21tZXJjZUFwcA
+2026-03-30T18:03:57,366+0530 [18877 60] com.newrelic INFO: Agent 18877@Prashants-MacBook-Air.local/SpringBootFakeCommerceApp connected to collector.newrelic.com:443
+2026-03-30T18:03:57,367+0530 [18877 60] com.newrelic INFO: Reporting to: https://rpm.newrelic.com/accounts/7847948/applications/1116561257
+2026-03-30T18:03:57,367+0530 [18877 60] com.newrelic INFO: Using default collector host: collector.newrelic.com
+2026-03-30T18:03:57,367+0530 [18877 60] com.newrelic INFO: Using default metric ingest URI: https://metric-api.newrelic.com/metric/v1
+2026-03-30T18:03:57,367+0530 [18877 60] com.newrelic INFO: Using default event ingest URI: https://insights-collector.newrelic.com/v1/accounts/events
+2026-03-30T18:03:57,370+0530 [18877 60] com.newrelic INFO: Using default collector host: collector.newrelic.com
+2026-03-30T18:03:57,370+0530 [18877 60] com.newrelic INFO: Using default metric ingest URI: https://metric-api.newrelic.com/metric/v1
+2026-03-30T18:03:57,370+0530 [18877 60] com.newrelic INFO: Using default event ingest URI: https://insights-collector.newrelic.com/v1/accounts/events
+2026-03-30T18:03:58,002+0530 [18877 60] com.newrelic INFO: Real user monitoring is enabled for application SpringBootFakeCommerceApp. Auto instrumentation is enabled.
+2026-03-30T18:03:58,002+0530 [18877 60] com.newrelic INFO: Updating shared Adaptive Sampler sampling target to 120
+2026-03-30T18:03:58,003+0530 [18877 60] com.newrelic INFO: New Relic JFR Monitor is disabled: JFR config has not been enabled in the Java agent.
+2026-03-30T18:04:37,865+0530 [18877 26] com.newrelic.agent.core.CoreServiceImpl INFO: JVM is shutting down

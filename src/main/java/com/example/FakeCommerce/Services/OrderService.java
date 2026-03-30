@@ -1,9 +1,7 @@
 package com.example.FakeCommerce.Services;
 
 
-import com.example.FakeCommerce.Adapters.OrderAdapters;
 import com.example.FakeCommerce.Exeptions.ResourceNotFoundExeption;
-import com.example.FakeCommerce.Mapper.OrderItemMapper;
 import com.example.FakeCommerce.Mapper.OrderMapper;
 import com.example.FakeCommerce.Repository.OrderRepository;
 import com.example.FakeCommerce.Repository.ProductOrderRepository;

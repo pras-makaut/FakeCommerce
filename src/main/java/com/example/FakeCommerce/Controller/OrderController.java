@@ -1,8 +1,4 @@
 package com.example.FakeCommerce.Controller;
-
-
-import com.example.FakeCommerce.Schema.Order;
-import com.example.FakeCommerce.Schema.ProductOrder;
 import com.example.FakeCommerce.Services.OrderService;
 import com.example.FakeCommerce.Utils.ApiResponse;
 import com.example.FakeCommerce.dtos.*;
