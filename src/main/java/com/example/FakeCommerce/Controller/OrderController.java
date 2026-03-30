@@ -4,11 +4,11 @@ package com.example.FakeCommerce.Controller;
 import com.example.FakeCommerce.Schema.Order;
 import com.example.FakeCommerce.Schema.ProductOrder;
 import com.example.FakeCommerce.Services.OrderService;
-import com.example.FakeCommerce.dtos.CreateOrderRequestDto;
-import com.example.FakeCommerce.dtos.CreateOrderRequestDtoByDiff;
-import com.example.FakeCommerce.dtos.GetOrderResponseDto;
-import com.example.FakeCommerce.dtos.UpdateOrderRequestDto;
+import com.example.FakeCommerce.Utils.ApiResponse;
+import com.example.FakeCommerce.dtos.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,16 +28,16 @@ public class OrderController {
 //    }
 
     @PostMapping
-    GetOrderResponseDto createOrderApi(@RequestBody CreateOrderRequestDtoByDiff createOrderRequestDto){
+    ResponseEntity<ApiResponse<GetOrderResponseDto>> createOrderApi(@RequestBody CreateOrderRequestDtoByDiff createOrderRequestDto){
 
-        return orderService.createOrderApi(createOrderRequestDto);
+        return ResponseEntity.status(HttpStatus.OK).body(ApiResponse.success(orderService.createOrderApi(createOrderRequestDto),"Order Created SuccesFully"));
 
     }
 
     @PostMapping("/{id}")
-    GetOrderResponseDto updateOrderApi(@PathVariable Long id,@RequestBody UpdateOrderRequestDto updateOrderRequestDto){
+    ResponseEntity<ApiResponse<GetOrderResponseDto>> updateOrderApi(@PathVariable Long id,@RequestBody UpdateOrderRequestDto updateOrderRequestDto){
 
-        return orderService.updateOrderApi(id,updateOrderRequestDto);
+        return ResponseEntity.status(HttpStatus.OK).body(ApiResponse.success(orderService.updateOrderApi(id,updateOrderRequestDto),"Order Updated SuccesFully"));
 
     }
 
@@ -57,5 +57,10 @@ public class OrderController {
 //    public boolean deleteOrder(@PathVariable Long id) {
 //
 //    }
+
+    @GetMapping("/{id}/summary")
+    public ResponseEntity<ApiResponse<GetOrderSummaryResponseDto>> getOrderSummary(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(ApiResponse.success(orderService.getOrderSummary(id),"Order Summary fetch successfully"));
+    }
 
 }

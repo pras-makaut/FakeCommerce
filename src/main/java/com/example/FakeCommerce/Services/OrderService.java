@@ -17,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -205,6 +206,35 @@ public class OrderService {
             productOrderRepository.deleteAll(toDelete);
         }
         return orderMapper.toGetOrderResponseDto(order,productOrderRepository.findByOrderId(orderId));
+    }
+
+    public GetOrderSummaryResponseDto getOrderSummary(Long id){
+
+        Order order = orderRepository.findById(id).orElseThrow(() -> new ResourceNotFoundExeption("Order not found with id : " + id));
+
+        List<ProductOrder> productOrders = productOrderRepository.findByOrdertWithProduct(order);
+
+        List<OrderItemResponseDto> items = orderMapper.toGetOrderResponseDto(order,productOrders).getItems();
+
+        int totalItems = productOrders.stream().mapToInt(ProductOrder::getQuantity).sum();
+
+        BigDecimal totalPrice = productOrders.stream()
+                .map(op -> op.getProduct().getPrice().multiply(BigDecimal.valueOf(op.getQuantity())))
+                .reduce(BigDecimal.ZERO,BigDecimal::add);
+
+        return GetOrderSummaryResponseDto.builder()
+                .id(order.getId())
+                .status(order.getStatus())
+                .updatedAt(order.getUpdatedAt())
+                .createAt(order.getCreatedAt())
+                .items(items)
+                .totalItems(totalItems)
+                .totalPrice(totalPrice)
+                .build();
+
+
+
+
     }
 
 
