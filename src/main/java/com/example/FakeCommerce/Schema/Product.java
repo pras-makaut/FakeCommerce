@@ -16,6 +16,10 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Builder
 @Entity
+//@Table(name = "products",indexes = {
+//        @Index(name = "idx_product_price",columnList = "price"),
+//        @Index(name = "idx_product_price_rating", columnList = "price ratings")
+//})
 @Table(name = "products")
 @SQLDelete(sql = "UPDATE products set deleted_at = CURRENT_TIMESTAMP WHERE id=?")
 @SQLRestriction("deleted_at IS NULL")
