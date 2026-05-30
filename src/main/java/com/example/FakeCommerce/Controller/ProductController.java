@@ -33,7 +33,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    ResponseEntity<ApiResponse<Product>> getProductById(@PathVariable long id){
+    ResponseEntity<ApiResponse<GetProductResponseDto>> getProductById(@PathVariable long id){
         return ResponseEntity.status(HttpStatus.OK)
                 .body(ApiResponse.success(productService.getProductById(id), "Product fetched successfully"));
     }
