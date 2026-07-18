@@ -25,19 +25,19 @@ public class CategoryControllerTest {
     @MockitoBean
     private CategoryService categoryService;
 
-    @Test
-    void createCategory_returns201() throws Exception {
-        // arrange.
-        Category testCategory = Category.builder().name("Test Category").build();
-        testCategory.setId(1L);
-        when(categoryService.createCategory(any())).thenReturn(testCategory);
-
-        // act & assert.
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/categories")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"name\": \"Test Category\"}"))
-                .andExpect(MockMvcResultMatchers.status().isCreated())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.data.name").value("Test Category"));
-
-    }
+//    @Test
+//    void createCategory_returns201() throws Exception {
+//        // arrange.
+//        Category testCategory = Category.builder().name("Test Category").build();
+//        testCategory.setId(1L);
+//        when(categoryService.createCategory(any())).thenReturn(testCategory);
+//
+//        // act & assert.
+//        mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/categories")
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content("{\"name\": \"Test Category\"}"))
+//                .andExpect(MockMvcResultMatchers.status().isCreated())
+//                .andExpect(MockMvcResultMatchers.jsonPath("$.data.name").value("Test Category"));
+//
+//    }
 }

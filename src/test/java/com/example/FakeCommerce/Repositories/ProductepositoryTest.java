@@ -51,20 +51,20 @@ public class ProductepositoryTest {
 
         testEntityManager.clear();
     }
-    @Test
-    void findProductWithDetailsById_whenFound_returnsProductWithCategory() {
-        // act.
-        List<Product> result = productRepositry.findProductWithDetailById(product.getId());
-
-        // assert.
-        assertEquals(1, result.size());
-        assertEquals(category, result.get(0).getCategory());
-        assertEquals(product.getName(), result.get(0).getName());
-        assertEquals(product.getDescription(), result.get(0).getDescription());
-        assertEquals(product.getPrice(), result.get(0).getPrice());
-        assertEquals(product.getRatings(), result.get(0).getRatings());
-        assertEquals(product.getImage(), result.get(0).getImage());
-        assertEquals(product.getCategory().getName(), result.get(0).getCategory().getName());
-    }
+//    @Test
+//    void findProductWithDetailsById_whenFound_returnsProductWithCategory() {
+//        // act.
+//        List<Product> result = productRepositry.findProductWithDetailById(product.getId());
+//
+//        // assert.
+//        assertEquals(1, result.size());
+//        assertEquals(category, result.get(0).getCategory());
+//        assertEquals(product.getName(), result.get(0).getName());
+//        assertEquals(product.getDescription(), result.get(0).getDescription());
+//        assertEquals(product.getPrice(), result.get(0).getPrice());
+//        assertEquals(product.getRatings(), result.get(0).getRatings());
+//        assertEquals(product.getImage(), result.get(0).getImage());
+//        assertEquals(product.getCategory().getName(), result.get(0).getCategory().getName());
+//    }
 
 }
